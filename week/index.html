@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span id="current"></span>
+        <span>/</span>
+        <span id="total">52 周</span>
+    </div>
+    <script type="text/javascript">
+        //不一定准
+        let current = document.getElementById("current");
+        let total = document.getElementById("total");
+        let now = new Date();
+        let startYear = new Date(now.getFullYear(), 0);
+        let dayOfYear = Math.floor((now - startYear) / (24 * 60 * 60 * 1000));
+        let weekOfYear = Math.floor(dayOfYear / 7) + 1;
+
+        current.innerText = weekOfYear;
+    </script>
+</body>
+
+</html>
