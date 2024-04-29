@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            margin: auto;
+            max-width: 750px;
+        }
+
+        .alert {
+            padding: 8px 35px 8px 14px;
+            margin-bottom: 20px;
+            border: 1px solid #fbeed5;
+            border-radius: 4px;
+        }
+
+        .alert-error {
+            color: #fff;
+            background-color: #f2dede;
+            border-color: #eed3d7;
+        }
+
+        .login-form {
+            margin: 50px auto 0;
+            max-width: 280px;
+
+
+            overflow: auto;
+        }
+
+        label {
+            display: block;
+            cursor: pointer;
+        }
+
+        input {
+            display: block;
+            padding-top: 2px;
+        }
+
+        input[type="text"] {
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 3px;
+            line-height: 20px;
+            width: 250px;
+            font-size: 99%;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        input[type="text"]:focus {
+            color: #000;
+            border-color: rgba(82, 168, 236, 0.8);
+            outline: 0;
+            box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+        }
+
+        .buttons {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            appearance: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 3px 10px;
+            border: 1px solid;
+            border-radius: unset;
+        }
+
+        .button-primary {
+            border-color: #3079ed;
+            background: #4d90fe;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="login-form">
+            <form action="#" method="post" onsubmit="return false;">
+                <input type="hidden" name="token" value="xxxx">
+                <div role="alert" class="alert alert-error">账号密码错误账号密码错误账号密码错误</div>
+                <label for="form-username">用户名</label>
+                <input type="text" name="username" id="form-username" value="" autocomplete="username" required
+                    autofocus>
+                <label for="form-password">密码</label>
+                <input type="text" name="password" id="form-password" value="" autocomplete="password" required>
+                <div class="buttons">
+                    <button type="submit" class="button button-primary" data-label-loading="加载中..">登录</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+<script type="javascript">
+
+</script>
+
+</html>
