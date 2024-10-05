@@ -17,10 +17,9 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.VITE_BASH),
   routes: routes,
 });
-
 router.afterEach((to, from) => {
   nextTick(() => {
     document.title = to.meta.title || to.name;

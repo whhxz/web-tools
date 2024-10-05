@@ -61,7 +61,6 @@ for (let i = 0; i <= 5; i++) {
 }
 
 const onCreate = () => {
-  console.log(saveRef.value);
   saveRef.value.open({});
 };
 </script>
