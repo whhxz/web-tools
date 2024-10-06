@@ -2,8 +2,8 @@ name: Build
 
 on: 
   push:
-    branches: 
-      - main
+    tags: 
+      - '*'
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        ref: main
+        ref: ${{ github.ref }}
     # node js
     - name: NodeJs
       uses: actions/setup-node@v4

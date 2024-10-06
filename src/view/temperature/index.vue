@@ -5,8 +5,9 @@
         <DropdownMenu>
           <DropdownItem v-model="title" :options="titles" />
         </DropdownMenu>
-        <Search v-model="search" placeholder="请输入备注关键词" input-align="center" />
+        <Icon class="add-title" name="edit" @click="onCreateTitle" />
       </div>
+      <Search v-model="search" placeholder="请输入备注关键词" input-align="center" />
       <div class="list">
         <Cell
           v-for="record in records"
@@ -16,12 +17,17 @@
         />
       </div>
       <FloatingBubble icon="plus" @click="onCreate" />
-      <Save ref="saveRef" />
+      <SaveRecord ref="saveRecordRef" />
+      <SaveTitle ref="saveTitleRef" />
     </div>
   </div>
 </template>
 <script setup>
-import Save from './save.vue';
+import SaveRecord from './save-record.vue';
+import SaveTitle from './save-title.vue';
+
+import { Icon } from 'vant';
+import 'vant/lib/icon/style';
 
 import { DropdownMenu, DropdownItem } from 'vant';
 import 'vant/lib/dropdown-menu/style';
@@ -39,7 +45,8 @@ import 'vant/lib/floating-bubble/style';
 
 import { ref } from 'vue';
 
-const saveRef = ref(null);
+const saveRecordRef = ref(null);
+const saveTitleRef = ref(null);
 
 const search = ref('');
 
@@ -59,9 +66,11 @@ const records = ref([
 for (let i = 0; i <= 5; i++) {
   records.value.push(...records.value);
 }
-
+const onCreateTitle = () => {
+  saveTitleRef.value.open({});
+};
 const onCreate = () => {
-  saveRef.value.open({});
+  saveRecordRef.value.open({});
 };
 </script>
 <style scoped>
@@ -81,7 +90,15 @@ const onCreate = () => {
   flex-direction: column;
 }
 .header {
-  height: 15vh;
+  height: 8vh;
+  position: relative;
+}
+.header .add-title {
+  position: absolute;
+  right: 1rem;
+  top: 2.5vh;
+  cursor: pointer;
+  font-size: 18px;
 }
 .list {
   flex: 1;
