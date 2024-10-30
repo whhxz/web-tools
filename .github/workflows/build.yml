@@ -44,6 +44,9 @@ jobs:
     # 生成最新文件
     - name: Generate
       run: pnpm build
+    # 404 生成
+    - name: 404page
+      run: cp dist/index.html dist/404.html
     # 推送到分支
     - name: push to branch
       id: deploy
