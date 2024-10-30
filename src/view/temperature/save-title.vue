@@ -3,12 +3,12 @@
     <div class="container">
       <div>
         <div class="title">
-          <Icon name="label-o" @click="onCreateTitle" />
-          <input type="text" :value="title" />
+          <Icon name="label-o" />
+          <input type="text" :value="title" placeholder="输入记录标题" />
         </div>
-        <p class="tip">输入记录标题</p>
+        <!-- <p class="tip">输入记录标题</p> -->
       </div>
-      <RadioGroup v-model="operate" direction="horizontal">
+      <RadioGroup class="operation" v-model="operate" direction="horizontal">
         <Radio name="create">新增</Radio>
         <Radio name="edit">修改</Radio>
       </RadioGroup>
@@ -31,7 +31,7 @@ import 'vant/lib/radio/style';
 import { toRefs } from 'vue';
 
 const emit = defineEmits(['success']);
-const visable = ref(true);
+const visable = ref(false);
 const form = reactive({
   title: '',
   operate: 'create',
@@ -48,7 +48,7 @@ defineExpose({
 });
 </script>
 
-<style scoped>
+<style lang="css" scoped>
 .container {
   padding: 1rem;
 }
@@ -64,11 +64,17 @@ defineExpose({
 .title input {
   /* outline: none; */
   border: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .container .tip {
   font-size: 0.8rem;
   color: #a6a6a6;
   padding-bottom: 0.5rem;
+  margin-top: 0.3rem;
+  margin-left: 0.6rem;
+}
+.container .operation {
+  margin-top: 0.5rem;
+  margin-left: 0.6rem;
 }
 </style>

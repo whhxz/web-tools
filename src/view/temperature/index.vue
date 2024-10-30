@@ -2,21 +2,21 @@
   <div class="page">
     <div class="container">
       <div class="header">
-        <DropdownMenu>
-          <DropdownItem v-model="title" :options="titles" />
-        </DropdownMenu>
-        <Icon class="add-title" name="edit" @click="onCreateTitle" />
+        <van-dropdown-menu>
+          <van-dropdown-item v-model="title" :options="titles" />
+        </van-dropdown-menu>
+        <van-icon class="add-title" name="edit" @click="onCreateTitle" />
       </div>
-      <Search v-model="search" placeholder="请输入备注关键词" input-align="center" />
+      <van-search v-model="search" placeholder="请输入备注关键词" input-align="center" />
       <div class="list">
-        <Cell
+        <van-cell
           v-for="record in records"
           :title="record.date + ' ' + record.time"
           :value="record.value"
           :label="record.remark"
         />
       </div>
-      <FloatingBubble icon="plus" @click="onCreate" />
+      <van-floating-bubble icon="plus" @click="onCreate" />
       <SaveRecord ref="saveRecordRef" />
       <SaveTitle ref="saveTitleRef" />
     </div>
@@ -25,23 +25,6 @@
 <script setup>
 import SaveRecord from './save-record.vue';
 import SaveTitle from './save-title.vue';
-
-import { Icon } from 'vant';
-import 'vant/lib/icon/style';
-
-import { DropdownMenu, DropdownItem } from 'vant';
-import 'vant/lib/dropdown-menu/style';
-import 'vant/lib/dropdown-item/style';
-
-import { Cell, CellGroup } from 'vant';
-import 'vant/lib/cell/style';
-import 'vant/lib/cell-group/style';
-
-import { Search } from 'vant';
-import 'vant/lib/search/style';
-
-import { FloatingBubble } from 'vant';
-import 'vant/lib/floating-bubble/style';
 
 import { ref } from 'vue';
 
@@ -73,7 +56,7 @@ const onCreate = () => {
   saveRecordRef.value.open({});
 };
 </script>
-<style scoped>
+<style lang="css" scoped>
 .page {
   box-sizing: border-box;
   width: 100%;

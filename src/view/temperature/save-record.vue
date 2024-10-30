@@ -1,6 +1,6 @@
 <template>
-  <Dialog v-model:show="visable" :title="title" show-cancel-button @confirm="onSubmit">
-    <Field
+  <van-dialog v-model:show="visable" :title="title" show-cancel-button @confirm="onSubmit">
+    <van-field
       label-width="5em"
       clickable
       label="日期"
@@ -10,7 +10,7 @@
       placeholder="点击选择日期"
       @click="date.visable = true"
     />
-    <Calendar
+    <van-calendar
       :min-date="new Date(new Date() - 100 * 24 * 60 * 60 * 1000)"
       :default-date="date.select"
       v-model:show="date.visable"
@@ -20,7 +20,7 @@
       @confirm="onSelectDate"
     />
 
-    <Field
+    <van-field
       label-width="5em"
       clickable
       label="时间"
@@ -30,32 +30,17 @@
       placeholder="点击选择时间"
       @click="time.visable = true"
     />
-    <Popup v-model:show="time.visable" position="bottom" teleport="#app">
-      <TimePicker v-model="time.select" @cancel="time.visable = false" @confirm="onSelectTime" />
-    </Popup>
-    <Field label-width="5em" v-model="form.value" label="温度" placeholder="当前温度（摄氏度）" />
-    <Field label-width="5em" v-model="form.remark" label="备注" placeholder="(选填)" />
-  </Dialog>
+    <van-popup v-model:show="time.visable" position="bottom" teleport="#app">
+      <van-time-picker v-model="time.select" @cancel="time.visable = false" @confirm="onSelectTime" />
+    </van-popup>
+    <van-field label-width="5em" v-model="form.value" label="温度" placeholder="当前温度（摄氏度）" />
+    <van-field label-width="5em" v-model="form.remark" label="备注" placeholder="(选填)" />
+  </van-dialog>
 </template>
 <script setup>
 import { ref, unref, reactive } from 'vue';
 import { dateFormart } from '@/util/date';
 
-import { Dialog } from 'vant';
-import 'vant/lib/dialog/style';
-
-import { Calendar } from 'vant';
-import 'vant/lib/calendar/style';
-
-import { Popup } from 'vant';
-import 'vant/lib/popup/style';
-
-import { Field, CellGroup } from 'vant';
-import 'vant/lib/cell-group/style';
-import 'vant/lib/field/style';
-
-import { TimePicker } from 'vant';
-import 'vant/lib/time-picker/style';
 import { toRefs } from 'vue';
 
 const emit = defineEmits(['success']);
