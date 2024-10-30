@@ -2,8 +2,10 @@ name: Build
 
 on: 
   push:
-    tags: 
-      - '*'
+    # tags: 
+    #   - '*'
+    branches: 
+      - main
   workflow_dispatch:
 
 jobs:
