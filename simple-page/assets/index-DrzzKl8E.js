@@ -1,0 +1,1 @@
+import{_ as n,c as r,a as t,b as a,w as s,r as l,o as u,d as c}from"./index-DfiqJAyD.js";const d={};function i(f,e){const o=l("RouterLink");return u(),r("ul",null,[t("li",null,[a(o,{to:"/week"},{default:s(()=>e[0]||(e[0]=[c("周")])),_:1})]),e[1]||(e[1]=t("li",null,[t("a",{href:"temperature/"},"体温记录")],-1))])}const m=n(d,[["render",i]]);export{m as default};

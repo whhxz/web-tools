@@ -1,0 +1,63 @@
+name: 简单页面
+
+on: 
+  push:
+    # tags: 
+    #   - '*'
+    branches: 
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    name: Build Page
+    defaults:
+      run:
+        working-directory: ./simple-page
+    steps:
+    #检出
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.ref }}
+    # node js
+    - name: NodeJs
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    # pnpm
+    - name: pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 8
+    # 缓存
+    - name: Cache node_modules
+      uses: actions/cache@v3
+      id: cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    # 未命中安装
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: pnpm i
+    # 生成最新文件
+    - name: Generate
+      run: pnpm build
+    # 404 生成
+    - name: 404page
+      run: cp dist/index.html dist/404.html
+    # 推送到分支
+    - name: push to branch
+      id: deploy
+      uses: s0/git-publish-subdir-action@v2.6.0
+      env:
+        REPO: self
+        BRANCH: public # gh-pages该分支属于特殊分支
+        FOLDER: simple-page/dist
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SQUASH_HISTORY: true
+        TARGET_DIR: simple-page
