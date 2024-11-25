@@ -12,14 +12,15 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     name: Build Page
+    defaults:
+      run:
+        working-directory: ./simple-page
     steps:
     #检出
     - name: Checkout
       uses: actions/checkout@v4
       with:
         ref: ${{ github.ref }}
-    - name: cdfolder
-      run: cd simple-page
     # node js
     - name: NodeJs
       uses: actions/setup-node@v4
