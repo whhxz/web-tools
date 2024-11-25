@@ -57,6 +57,7 @@ jobs:
       env:
         REPO: self
         BRANCH: public # gh-pages该分支属于特殊分支
-        FOLDER: dist
+        FOLDER: simple-page/dist
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SQUASH_HISTORY: true
+        TARGET_DIR: simple-page
